@@ -1,0 +1,39 @@
+import { Camera, History, Shield, Zap, Users, Award, BarChart3 } from "lucide-react";
+
+// Hook to determine theme
+const useThemeAwareImage = (darkImage: string, lightImage: string) => {
+  if (typeof window !== 'undefined') {
+    const isDark = document.documentElement.classList.contains('dark');
+    return isDark ? darkImage : lightImage;
+  }
+  return lightImage;
+};
+
+export const features = [
+  {
+    title: "AI-Powered Detection",
+    description: "Advanced machine learning algorithms trained on thousands of sunflower disease images for accurate diagnosis.",
+    icon: <Zap className="w-6 h-6" />,
+    image: "/lovable-uploads/b4c6b5e1-7b3a-4b5e-8f2a-9c3d4e5f6a7b.png"
+  },
+  {
+    title: "Image Upload & Analysis",
+    description: "Simply upload photos of your sunflower plants and get instant disease diagnosis with treatment recommendations.",
+    icon: <Camera className="w-6 h-6" />,
+    get image() {
+      return useThemeAwareImage("/lovable-uploads/image.png", "/lovable-uploads/image2.png");
+    }
+  },
+  {
+    title: "Detection History",
+    description: "Track all your previous disease detections and monitor the health progression of your sunflower crops over time.",
+    icon: <History className="w-6 h-6" />,
+    image: "/lovable-uploads/b6436838-5c1a-419a-9cdc-1f9867df073d.png"
+  },
+  {
+    title: "Detailed Analytics",
+    description: "Comprehensive reports and analytics on disease patterns, treatment effectiveness, and crop health insights.",
+    icon: <BarChart3 className="w-6 h-6" />,
+    image: "/lovable-uploads/79f2b901-8a4e-42a5-939f-fae0828e0aef.png"
+  }
+];
