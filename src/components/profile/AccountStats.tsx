@@ -29,7 +29,7 @@ export const AccountStats = ({ userId }: AccountStatsProps) => {
     const fetchStats = async () => {
       try {
         // Fetch user's analysis history to calculate stats
-        const historyResponse = await apiService.getSunflowerHistory(userId);
+        const historyResponse = await apiService.getSunflowerHistory();
         
         if (historyResponse && historyResponse.data) {
           const analyses = historyResponse.data;
