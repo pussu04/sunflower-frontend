@@ -51,13 +51,9 @@ const AnalysisResults = () => {
     // Get real result from location state (API response from AnalysisTools)
     if (location.state?.result) {
       const apiResponse = location.state.result;
-      console.log('📊 Received API Response:', apiResponse);
       
       // Extract the actual result data from the nested structure
       const apiResult = apiResponse.result || apiResponse;
-      console.log('🏷️ Predicted Class:', apiResult.predicted_class);
-      console.log('🎯 All Predictions:', apiResult.all_predictions);
-      console.log('🔍 Full Result Object:', apiResult);
       
       // Transform API response to component format
       const transformedResult: AnalysisResult = {
@@ -97,8 +93,6 @@ const AnalysisResults = () => {
       setIsLoading(false);
     } else {
       // Fallback if no result data
-      console.warn('❌ No analysis result found in location state');
-      console.log('🔍 Location state:', location.state);
       setIsLoading(false);
     }
   }, [location.state]);
