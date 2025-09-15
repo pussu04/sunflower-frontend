@@ -28,12 +28,12 @@ export const features = [
     title: "Detection History",
     description: "Track all your previous disease detections and monitor the health progression of your sunflower crops over time.",
     icon: <History className="w-6 h-6" />,
-    image: "/lovable-uploads/b6436838-5c1a-419a-9cdc-1f9867df073d.png"
+    image: "/lovable-uploads/imagedec.png"
   },
   {
     title: "Detailed Analytics",
     description: "Comprehensive reports and analytics on disease patterns, treatment effectiveness, and crop health insights.",
     icon: <BarChart3 className="w-6 h-6" />,
-    image: "/lovable-uploads/79f2b901-8a4e-42a5-939f-fae0828e0aef.png"
+    image: "/lovable-uploads/imagedet.png"
   }
 ];
