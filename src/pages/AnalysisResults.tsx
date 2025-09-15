@@ -9,7 +9,7 @@ import {
   Download, 
   Share2,
   Clock,
-  Brain,
+  Flower2,
   Activity,
   FileText,
   Camera
@@ -48,38 +48,59 @@ const AnalysisResults = () => {
   const [result, setResult] = useState<AnalysisResult | null>(null);
 
   useEffect(() => {
-    // Simulate loading and get result from location state or API
-    const timer = setTimeout(() => {
-      // Mock result - in real app, this would come from API or location state
-      const mockResult: AnalysisResult = {
-        id: "analysis_" + Date.now(),
+    // Get real result from location state (API response from AnalysisTools)
+    if (location.state?.result) {
+      const apiResponse = location.state.result;
+      console.log('📊 Received API Response:', apiResponse);
+      
+      // Extract the actual result data from the nested structure
+      const apiResult = apiResponse.result || apiResponse;
+      console.log('🏷️ Predicted Class:', apiResult.predicted_class);
+      console.log('🎯 All Predictions:', apiResult.all_predictions);
+      console.log('🔍 Full Result Object:', apiResult);
+      
+      // Transform API response to component format
+      const transformedResult: AnalysisResult = {
+        id: apiResponse.analysis_id?.toString() || "analysis_" + Date.now(),
         filename: location.state?.filename || "sunflower_leaf.jpg",
         uploadTime: new Date().toISOString(),
         analysisTime: new Date().toISOString(),
-        status: Math.random() > 0.5 ? 'healthy' : 'diseased',
-        confidence: Math.floor(Math.random() * 30) + 70, // 70-100%
-        disease: Math.random() > 0.5 ? 'Downy Mildew' : undefined,
-        severity: Math.random() > 0.5 ? 'medium' : 'low',
-        recommendations: [
-          "Monitor plant regularly for symptom progression",
-          "Ensure proper air circulation around plants",
-          "Consider applying organic fungicide if symptoms worsen",
-          "Remove affected leaves to prevent spread"
-        ],
-        imageUrl: location.state?.imageUrl || "/placeholder-sunflower.jpg",
+        // Use actual predicted class from model
+        status: (apiResult.predicted_class === 'Fresh Leaf') ? 'healthy' : 'diseased',
+        confidence: Math.round((apiResult.confidence || 0) * 100),
+        disease: apiResult.predicted_class || 'Unknown',
+        severity: apiResult.confidence > 0.8 ? 'high' : apiResult.confidence > 0.6 ? 'medium' : 'low',
+        recommendations: (apiResult.predicted_class === 'Fresh Leaf') 
+          ? [
+              "Continue regular monitoring of plant health",
+              "Maintain proper watering and fertilization schedule",
+              "Ensure adequate sunlight exposure",
+              "Keep monitoring for early signs of disease"
+            ]
+          : [
+              "Monitor plant regularly for symptom progression",
+              "Ensure proper air circulation around plants",
+              "Consider applying appropriate treatment based on disease type",
+              "Remove affected leaves to prevent spread",
+              "Consult with agricultural expert for severe cases"
+            ],
+        imageUrl: apiResponse.image_url || location.state?.imageUrl || "/placeholder-sunflower.jpg",
         technicalDetails: {
           modelVersion: "SunflowerNet v2.1",
-          processingTime: Math.floor(Math.random() * 3000) + 1000, // 1-4 seconds
-          imageSize: "2.4 MB",
+          processingTime: (apiResponse.processing_time || 2) * 1000,
+          imageSize: "Unknown",
           resolution: "1920x1080"
         }
       };
       
-      setResult(mockResult);
+      setResult(transformedResult);
       setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
+    } else {
+      // Fallback if no result data
+      console.warn('❌ No analysis result found in location state');
+      console.log('🔍 Location state:', location.state);
+      setIsLoading(false);
+    }
   }, [location.state]);
 
   const getStatusColor = (status: string) => {
@@ -123,7 +144,7 @@ const AnalysisResults = () => {
           className="text-center space-y-6"
         >
           <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center mx-auto">
-            <Brain className="w-8 h-8 text-white animate-pulse" />
+            <Flower2 className="w-8 h-8 text-white animate-pulse" />
           </div>
           <div className="space-y-3">
             <h2 className="text-3xl font-bold">Analyzing Your Image</h2>

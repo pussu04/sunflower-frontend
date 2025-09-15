@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Upload, Brain, Activity, TrendingUp, AlertTriangle, Flower2 } from "lucide-react";
+import { Upload, Flower2, Activity, TrendingUp, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
@@ -125,7 +125,7 @@ const Dashboard = () => {
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-                <Brain className="w-6 h-6 text-white" />
+                <Flower2 className="w-6 h-6 text-white" />
               </div>
               <div>
                 <CardTitle className="text-xl text-foreground">Sunflower Disease Detection</CardTitle>
@@ -139,7 +139,7 @@ const Dashboard = () => {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
-                  <Brain className="w-4 h-4 text-blue-500" />
+                  <Flower2 className="w-4 h-4 text-blue-500" />
                   <span>AI-Powered Detection</span>
                 </div>
                 <div className="flex items-center gap-2">

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Brain, Mail, Lock, Eye, EyeOff, UserPlus, ArrowLeft } from "lucide-react";
+import { Flower2, Mail, Lock, Eye, EyeOff, UserPlus, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -96,7 +96,7 @@ const Login = () => {
         <Card className="backdrop-blur-sm bg-card/90 border-border shadow-xl">
           <CardHeader className="text-center space-y-4">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center mx-auto">
-              <Brain className="w-8 h-8 text-white" />
+              <Flower2 className="w-8 h-8 text-white" />
             </div>
             <div>
               <CardTitle className="text-2xl font-bold text-foreground">SunflowerScan.ai</CardTitle>

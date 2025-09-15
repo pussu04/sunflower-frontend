@@ -14,7 +14,7 @@ export const features = [
     title: "AI-Powered Detection",
     description: "Advanced machine learning algorithms trained on thousands of sunflower disease images for accurate diagnosis.",
     icon: <Zap className="w-6 h-6" />,
-    image: "/lovable-uploads/b4c6b5e1-7b3a-4b5e-8f2a-9c3d4e5f6a7b.png"
+    image: "/lovable-uploads/imageai.png"
   },
   {
     title: "Image Upload & Analysis",

@@ -7,7 +7,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import Navigation from "@/components/Navigation";
 import { useTheme } from "@/components/theme-provider";
 import Footer from "@/components/Footer";
-import LogoCarousel from "@/components/LogoCarousel";
+
 
 const Index = () => {
   const { theme } = useTheme();
@@ -94,8 +94,7 @@ const Index = () => {
         </motion.div>
       </motion.section>
 
-      {/* Logo Carousel */}
-      <LogoCarousel />
+    
 
       {/* Features Section */}
       <div id="features" className="bg-background">

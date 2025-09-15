@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Upload, Camera, FileImage, Zap, Brain, Activity } from "lucide-react";
+import { Upload, Camera, FileImage, Zap, Flower2, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -84,7 +84,7 @@ const AnalysisTools = () => {
       >
         <div className="flex items-center justify-center gap-3">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-            <Brain className="w-6 h-6 text-white" />
+            <Flower2 className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">
             Analysis Tools
@@ -237,7 +237,7 @@ const AnalysisTools = () => {
         <Card>
           <CardContent className="p-6 text-center space-y-3">
             <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center mx-auto">
-              <Brain className="w-6 h-6 text-blue-600" />
+              <Flower2 className="w-6 h-6 text-blue-600" />
             </div>
             <h3 className="text-lg font-semibold">AI-Powered Detection</h3>
             <p className="text-sm text-muted-foreground">
